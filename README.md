@@ -1,6 +1,6 @@
 # Retail Customer Retention & Revenue Intelligence
 
-A portfolio project using Python for data preparation, statistical analysis, and machine learning, with Power BI Desktop for reporting. The [portfolio report](reports/portfolio_results.md) presents measured revenue, customer segments, and model evaluation. The [Power BI project](powerbi/Retail.pbip) visualizes the results.
+A project using Python for data preparation, statistical analysis, and machine learning, with Power BI Desktop for reporting. The [portfolio report](reports/portfolio_results.md) presents measured revenue, customer segments, and model evaluation. The [Power BI project](powerbi/Retail.pbip) visualizes the results.
 
 ## Business questions
 
