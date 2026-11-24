@@ -1,0 +1,52 @@
+table 'Monthly Revenue'
+	lineageTag: 60a4f07c-f85f-4f3a-93b2-5dd9b4961101
+
+	measure 'Gross sales' = SUM('Monthly Revenue'[Gross amount])
+		formatString: £#,0.00
+		lineageTag: 8cdd5899-4253-4cad-b1f6-9de73ea12622
+
+	measure 'Provisional net' = SUM('Monthly Revenue'[Provisional net amount])
+		formatString: £#,0.00
+		lineageTag: 23723767-6304-424b-8381-7f0cb9bfeded
+
+	measure 'Purchase invoices' = SUM('Monthly Revenue'[Invoice count])
+		formatString: #,0
+		lineageTag: f00771ac-48f2-4c47-977a-77a0ebe94748
+
+	column Month
+		dataType: string
+		lineageTag: 667b3f24-74f3-45f7-bc15-629aa759261b
+		summarizeBy: none
+		sourceColumn: Month
+
+	column 'Gross amount'
+		dataType: double
+		formatString: £#,0.00
+		lineageTag: c0ef2559-46a1-4eb7-a2ee-26ad62a9ba6f
+		summarizeBy: none
+		sourceColumn: Gross amount
+
+	column 'Provisional net amount'
+		dataType: double
+		formatString: £#,0.00
+		lineageTag: 52262d7f-1228-4429-8c26-53838e65ff6e
+		summarizeBy: none
+		sourceColumn: Provisional net amount
+
+	column 'Invoice count'
+		dataType: int64
+		formatString: #,0
+		lineageTag: c71560b7-92bc-40e3-b6c6-8a6539c37a8e
+		summarizeBy: none
+		sourceColumn: Invoice count
+
+	partition 'Monthly Revenue' = m
+		mode: import
+		source =
+				let
+				    Rows = Json.Document(Binary.FromText("W1siMjAwOS0xMiIsIDgwMDkzOS44MywgNzk5NzE3Ljc3LCAxNjY2XSwgWyIyMDEwLTAxIiwgNjEzODI0LjU5LCA2MTE4NjAuNzgsIDEwNDldLCBbIjIwMTAtMDIiLCA1Mzk3MjguNTUsIDUzMzE4NC4zOCwgMTE4OV0sIFsiMjAxMC0wMyIsIDc2NDI5My40OSwgNzYxOTU5LjM1LCAxNjQ3XSwgWyIyMDEwLTA0IiwgNjQ4ODg2LjA3LCA2NDU5NzUuMTUsIDE0MzVdLCBbIjIwMTAtMDUiLCA2NDU2MjcuNjQsIDY0MDUyOS4yLCAxNDg0XSwgWyIyMDEwLTA2IiwgNjk5MTcyLjMsIDY5NTUxMS40MywgMTYxMl0sIFsiMjAxMC0wNyIsIDYzNDg4Ni4xOCwgNjI5NTI5LjE1LCAxNTA3XSwgWyIyMDEwLTA4IiwgNjc2MDU5Ljg3LCA2NzE5OTQuMzcsIDE0MDJdLCBbIjIwMTAtMDkiLCA4NzE4NTkuNjYsIDg1NjM3Ni44NCwgMTc4OV0sIFsiMjAxMC0xMCIsIDEwOTc5MzkuMzcsIDEwODgyMDIuNDgsIDIyNDRdLCBbIjIwMTAtMTEiLCAxNDM1NTMyLjgxLCAxNDI1NTMyLjg0LCAyNzE5XSwgWyIyMDEwLTEyIiwgNzc3ODY1LjY0LCA3NzI4MDQuOTQsIDE1NTBdLCBbIjIwMTEtMDEiLCA2NzE5MTQuOTQsIDY2NTkzMS44OSwgMTA4MV0sIFsiMjAxMS0wMiIsIDUwODg2OS43NSwgNTA3MTg0LjM5LCAxMDkzXSwgWyIyMDExLTAzIiwgNjkxMTMyLjU5LCA2ODkyMzcuNzMsIDE0NDBdLCBbIjIwMTEtMDQiLCA1MTYxOTQuOTEsIDUwMDE4NS43OSwgMTIzNV0sIFsiMjAxMS0wNSIsIDc0MTE1My43NiwgNzM4NTU0LjM2LCAxNjY4XSwgWyIyMDExLTA2IiwgNzM4NzUxLjg3LCA3MzQ0MTcuMTIsIDE1MjVdLCBbIjIwMTEtMDciLCA2ODkyODkuODYsIDY4NTU3NS44LCAxNDUyXSwgWyIyMDExLTA4IiwgNzI1NDkzLjc2LCA3MjA5ODcuNzIsIDEzMzldLCBbIjIwMTEtMDkiLCAxMDMwNDY4Ljc4LCAxMDIyMjE4LjA5LCAxODE4XSwgWyIyMDExLTEwIiwgMTEwNjY2Ni41MywgMTA5NTQ1MS43OSwgMjAwNV0sIFsiMjAxMS0xMSIsIDE0NTc3NDIuMjQsIDE0NDkzMjguNDYsIDI3NTFdLCBbIjIwMTEtMTIgKHBhcnRpYWwpIiwgNjE1NDg5Ljk4LCA2MTM5MDQuNDgsIDgxNl1d", BinaryEncoding.Base64)),
+				    Source = Table.FromRows(Rows, {"Month", "Gross amount", "Provisional net amount", "Invoice count"}),
+				    Typed = Table.TransformColumnTypes(Source, {{"Month", type text}, {"Gross amount", type number}, {"Provisional net amount", type number}, {"Invoice count", Int64.Type}})
+				in
+				    Typed
+

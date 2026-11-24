@@ -1,0 +1,109 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ca5db62355701e5b3ba2",
+  "position": {
+    "x": 24,
+    "y": 168,
+    "z": 4000,
+    "height": 528,
+    "width": 800,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Monthly Revenue"
+                    }
+                  },
+                  "Property": "Month"
+                }
+              },
+              "queryRef": "Monthly Revenue.Month",
+              "nativeQueryRef": "Month",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Monthly Revenue"
+                    }
+                  },
+                  "Property": "Gross sales"
+                }
+              },
+              "queryRef": "Monthly Revenue.Gross sales",
+              "nativeQueryRef": "Gross sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Monthly Revenue"
+                    }
+                  },
+                  "Property": "Provisional net"
+                }
+              },
+              "queryRef": "Monthly Revenue.Provisional net",
+              "nativeQueryRef": "Provisional net"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Monthly Revenue"
+                  }
+                },
+                "Property": "Month"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Monthly gross sales and provisional net'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

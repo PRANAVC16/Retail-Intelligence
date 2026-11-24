@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "b0d7cced0be00e73eb44",
+  "position": {
+    "x": 24,
+    "y": 24,
+    "z": 1000,
+    "width": 1232,
+    "height": 360,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Evaluation"
+                    }
+                  },
+                  "Property": "Model"
+                }
+              },
+              "queryRef": "Model Evaluation.Model",
+              "nativeQueryRef": "Model"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Evaluation"
+                    }
+                  },
+                  "Property": "Holdout"
+                }
+              },
+              "queryRef": "Model Evaluation.Holdout",
+              "nativeQueryRef": "Holdout"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Evaluation"
+                    }
+                  },
+                  "Property": "Cutoff"
+                }
+              },
+              "queryRef": "Model Evaluation.Cutoff",
+              "nativeQueryRef": "Cutoff"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Evaluation"
+                    }
+                  },
+                  "Property": "Customers evaluated"
+                }
+              },
+              "queryRef": "Model Evaluation.Customers evaluated",
+              "nativeQueryRef": "Customers evaluated"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Evaluation"
+                    }
+                  },
+                  "Property": "Repeat share"
+                }
+              },
+              "queryRef": "Model Evaluation.Repeat share",
+              "nativeQueryRef": "Repeat share"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Evaluation"
+                    }
+                  },
+                  "Property": "Average precision"
+                }
+              },
+              "queryRef": "Model Evaluation.Average precision",
+              "nativeQueryRef": "Average precision"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Evaluation"
+                    }
+                  },
+                  "Property": "Top 10% precision"
+                }
+              },
+              "queryRef": "Model Evaluation.Top 10% precision",
+              "nativeQueryRef": "Top 10% precision"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Evaluation"
+                    }
+                  },
+                  "Property": "Brier score"
+                }
+              },
+              "queryRef": "Model Evaluation.Brier score",
+              "nativeQueryRef": "Brier score"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Out-of-time model performance'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

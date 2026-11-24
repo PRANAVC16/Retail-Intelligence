@@ -1,0 +1,66 @@
+table 'Model Evaluation'
+	lineageTag: c60bc281-4005-4e88-98ca-78dd80e10268
+
+	column Model
+		dataType: string
+		lineageTag: 8bc17b7a-18fa-4f1d-9627-018a21de2ae2
+		summarizeBy: none
+		sourceColumn: Model
+
+	column Holdout
+		dataType: string
+		lineageTag: a3701d92-144d-4a17-beb0-1d74d30c3dbd
+		summarizeBy: none
+		sourceColumn: Holdout
+
+	column Cutoff
+		dataType: string
+		lineageTag: 0fafc003-442e-4995-9556-aa54a1ecb992
+		summarizeBy: none
+		sourceColumn: Cutoff
+
+	column 'Customers evaluated'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 98e2921b-4927-4b28-b3c5-ea8927c8a400
+		summarizeBy: none
+		sourceColumn: Customers evaluated
+
+	column 'Repeat share'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 9948d6b0-4673-48b6-af56-e8d9e152511f
+		summarizeBy: none
+		sourceColumn: Repeat share
+
+	column 'Average precision'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 14672c28-5fa0-4385-bc4d-a4924cc9703b
+		summarizeBy: none
+		sourceColumn: Average precision
+
+	column 'Top 10% precision'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 52d3a8b5-2733-4279-8139-2591a8b5fb6b
+		summarizeBy: none
+		sourceColumn: Top 10% precision
+
+	column 'Brier score'
+		dataType: double
+		formatString: 0.000
+		lineageTag: 2fd0df65-99e5-4e96-9979-2a13c5b106ea
+		summarizeBy: none
+		sourceColumn: Brier score
+
+	partition 'Model Evaluation' = m
+		mode: import
+		source =
+				let
+				    Rows = Json.Document(Binary.FromText("W1sicmVjZW5jeV9vbmx5IiwgInZhbGlkYXRpb24iLCAiMjAxMS0wNC0zMCIsIDQ3OTcsIDAuMzUzOTcxMjMyMDIwMDEyNSwgMC42MTI2MTQ2OTE5MDU2OTg2LCAwLjY5NTgzMzMzMzMzMzMzMzMsIDAuMTg2MDc4Njg5NDY5MjE3OTZdLCBbInJlY2VuY3lfb25seSIsICJ0ZXN0IiwgIjIwMTEtMDgtMzEiLCA1MjI0LCAwLjQyODAyNDUwMjI5NzA5MDMsIDAuNjcxMTM2NTI3NDQ1MzgzOCwgMC43NTkwODIyMTc5NzMyMzE0LCAwLjIxMjY5Njk2MDI5NDQ3NzM1XSwgWyJsb2dpc3RpY19yZWdyZXNzaW9uIiwgInZhbGlkYXRpb24iLCAiMjAxMS0wNC0zMCIsIDQ3OTcsIDAuMzUzOTcxMjMyMDIwMDEyNSwgMC43MDQxMzYwNjQ0MDgwNTIxLCAwLjg1NjI1LCAwLjE3MjI2OTE5ODMyMTQ0OTgyXSwgWyJsb2dpc3RpY19yZWdyZXNzaW9uIiwgInRlc3QiLCAiMjAxMS0wOC0zMSIsIDUyMjQsIDAuNDI4MDI0NTAyMjk3MDkwMywgMC43NDYzOTY1MjY1ODM0MDgyLCAwLjkwMjQ4NTY1OTY1NTgzMTcsIDAuMTg3NjI3NTIwODcxMjgxNV1d", BinaryEncoding.Base64)),
+				    Source = Table.FromRows(Rows, {"Model", "Holdout", "Cutoff", "Customers evaluated", "Repeat share", "Average precision", "Top 10% precision", "Brier score"}),
+				    Typed = Table.TransformColumnTypes(Source, {{"Model", type text}, {"Holdout", type text}, {"Cutoff", type text}, {"Customers evaluated", Int64.Type}, {"Repeat share", type number}, {"Average precision", type number}, {"Top 10% precision", type number}, {"Brier score", type number}})
+				in
+				    Typed
+

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "00323f9269a67b4ead2e",
+  "position": {
+    "x": 866,
+    "y": 24,
+    "z": 3000,
+    "width": 390,
+    "height": 120,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Monthly Revenue"
+                    }
+                  },
+                  "Property": "Purchase invoices"
+                }
+              },
+              "queryRef": "Monthly Revenue.Purchase invoices",
+              "nativeQueryRef": "Purchase invoices"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Purchase invoices'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

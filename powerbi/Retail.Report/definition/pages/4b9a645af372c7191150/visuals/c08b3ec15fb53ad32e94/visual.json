@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "c08b3ec15fb53ad32e94",
+  "position": {
+    "x": 24,
+    "y": 24,
+    "z": 1000,
+    "height": 672,
+    "width": 1232,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Cohorts"
+                    }
+                  },
+                  "Property": "Months since first purchase"
+                }
+              },
+              "queryRef": "Cohorts.Months since first purchase",
+              "nativeQueryRef": "Months since first purchase",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Cohorts"
+                    }
+                  },
+                  "Property": "First observed purchase month"
+                }
+              },
+              "queryRef": "Cohorts.First observed purchase month",
+              "nativeQueryRef": "First observed purchase month",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Cohorts"
+                    }
+                  },
+                  "Property": "Retention"
+                }
+              },
+              "queryRef": "Cohorts.Retention",
+              "nativeQueryRef": "Retention"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Monthly retention by first observed purchase'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

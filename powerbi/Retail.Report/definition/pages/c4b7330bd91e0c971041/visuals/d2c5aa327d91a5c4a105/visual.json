@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "d2c5aa327d91a5c4a105",
+  "position": {
+    "x": 24,
+    "y": 24,
+    "z": 1000,
+    "width": 390,
+    "height": 120,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Monthly Revenue"
+                    }
+                  },
+                  "Property": "Gross sales"
+                }
+              },
+              "queryRef": "Monthly Revenue.Gross sales",
+              "nativeQueryRef": "Gross sales"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Gross sales'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

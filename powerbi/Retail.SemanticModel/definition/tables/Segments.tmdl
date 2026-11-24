@@ -1,0 +1,30 @@
+table Segments
+	lineageTag: 4f4cd8c6-2d23-465a-a236-01d5fe0098fd
+
+	measure Customers = SUM(Segments[Segment size])
+		formatString: #,0
+		lineageTag: 9581c2dd-51c2-4104-ac1a-56f52fe57ea1
+
+	column Segment
+		dataType: string
+		lineageTag: fdbfe014-da6e-478c-943f-c800f44e5b74
+		summarizeBy: none
+		sourceColumn: Segment
+
+	column 'Segment size'
+		dataType: int64
+		formatString: #,0
+		lineageTag: c76a9341-7a4a-45f6-acf4-e029942fd9de
+		summarizeBy: none
+		sourceColumn: Segment size
+
+	partition Segments = m
+		mode: import
+		source =
+				let
+				    Rows = Json.Document(Binary.FromText("W1siTGFwc2VkIiwgMjM4MF0sIFsiSGlnaC12YWx1ZSByZXBlYXQiLCA3OTFdLCBbIk90aGVyIGFjdGl2ZSIsIDE2NjhdLCBbIkF0IHJpc2siLCA1OTldLCBbIlJlY2VudCBmaXJzdCBvYnNlcnZlZCBidXllciIsIDM4Nl1d", BinaryEncoding.Base64)),
+				    Source = Table.FromRows(Rows, {"Segment", "Segment size"}),
+				    Typed = Table.TransformColumnTypes(Source, {{"Segment", type text}, {"Segment size", Int64.Type}})
+				in
+				    Typed
+

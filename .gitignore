@@ -1,0 +1,16 @@
+.venv/
+.python/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+reports/*.local.txt
+*.pbix
+*.pbit
+**/.pbi/cache.abf
+**/.pbi/localSettings.json
+**/.pbi/editorSettings.json

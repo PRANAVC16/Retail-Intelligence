@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "85c31ed0f01e0978536d",
+  "position": {
+    "x": 445,
+    "y": 24,
+    "z": 2000,
+    "width": 390,
+    "height": 120,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Monthly Revenue"
+                    }
+                  },
+                  "Property": "Provisional net"
+                }
+              },
+              "queryRef": "Monthly Revenue.Provisional net",
+              "nativeQueryRef": "Provisional net"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Provisional net after matched reversals'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
